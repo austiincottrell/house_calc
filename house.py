@@ -9,12 +9,12 @@ rent_1b1b = {'U District':[98105, [1300,1800]], 'N Seattle':[98115, [1400,1800]]
 rent_2b1b = {'U District':[98105, [1500,1750]], 'N Seattle':[98115, [1800,2100]], 'WallingFDord':[98103, [1800,2000]], 'Lindley':[27408, [700,850]]}
 rent_3b2b = {'U District':[98105, [2400,2500]], 'N Seattle':[98115, [2500,3000]], 'WallingFDord':[98103, [2500,3000]], 'Lindley':[27408, [700,850]]}
 
-# Average interest Rate, LTV Ration, Term
-interest_rate = float(0.0377 / 12)
-ltv_ratio = float(.0090)
-term = 246 #months
-
 def apartment():
+    # Average interest Rate, LTV Ration, Term
+    interest_rate = float(0.0377 / 12)
+    ltv_ratio = float(.0090)
+    term = 246 #months
+
     rent = 0
     rent_max = 0
     bad_chars = ['k', 'm', 'K', 'M']
