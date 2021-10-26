@@ -4,12 +4,15 @@ import locale
 import sys
 locale.setlocale(locale.LC_ALL, 'en_US')
 
-rent_0b1b = {'U District':[98105, [950,1200]],  'N Seattle':[98115, [1000,1200]], 'WallingFDord':[98103, [1000,1200]], 'Lindley':[27408, [700,850]]}
-rent_1b1b = {'U District':[98105, [1300,1800]], 'N Seattle':[98115, [1400,1800]], 'WallingFDord':[98103, [1400,1800]], 'Lindley':[27408, [700,850]]}
-rent_2b1b = {'U District':[98105, [1500,1750]], 'N Seattle':[98115, [1800,2100]], 'WallingFDord':[98103, [1800,2000]], 'Lindley':[27408, [700,850]]}
-rent_3b2b = {'U District':[98105, [2400,2500]], 'N Seattle':[98115, [2500,3000]], 'WallingFDord':[98103, [2500,3000]], 'Lindley':[27408, [700,850]]}
+rent_0b1b = {'U District':[98105, [950,1200]],  'N Seattle':[98115, [1000,1200]], 'WallingFDord':[98103, [1000,1200]], 'Lindley':[27408, [700,850]], 'W Seattle':[98136, [900,1000]] }
+rent_1b1b = {'U District':[98105, [1300,1800]], 'N Seattle':[98115, [1400,1800]], 'WallingFDord':[98103, [1400,1800]], 'Lindley':[27408, [700,850]], 'W Seattle':[98136, [1200,1500]] }
+rent_2b1b = {'U District':[98105, [1500,1750]], 'N Seattle':[98115, [1800,2100]], 'WallingFDord':[98103, [1800,2000]], 'Lindley':[27408, [700,850]], 'W Seattle':[98136, [1500,1800]] }
+rent_3b2b = {'U District':[98105, [2400,2500]], 'N Seattle':[98115, [2500,3000]], 'WallingFDord':[98103, [2500,3000]], 'Lindley':[27408, [700,850]], 'W Seattle':[98136, [1800,2200]] }
 
-def apartment():
+static_location = ['U District', 'N Seattle', 'WallingFDord', 'Lindley', 'W Seattle']
+text = "[0] "+ static_location[0] +" - "+ str(rent_0b1b[static_location[0]][0]) +"\n[1] "+ static_location[1] +" - "+ str(rent_0b1b[static_location[1]][0]) +"\n[2] "+ static_location[2] +" - "+ str(rent_0b1b[static_location[2]][0]) + "\n[3] "+ static_location[3] +" (NC) - "+ str(rent_0b1b[static_location[3]][0]) + "\n[4] "+ static_location[4] +" - "+ str(rent_0b1b[static_location[4]][0])
+
+def apartment(locations, body):
     # Average interest Rate, LTV Ration, Term
     interest_rate = float(0.0377 / 12)
     ltv_ratio = float(.0090)
@@ -18,22 +21,14 @@ def apartment():
     rent = 0
     rent_max = 0
     bad_chars = ['k', 'm', 'K', 'M']
-    static_location = ['U District', 'N Seattle', 'WallingFDord', 'Lindley']
     print("Lets calculate some Apartment Complex real estate!")
 
     ##############
     ### Income ###
     ##############
-    print("[0] U District - "+ str(rent_0b1b['U District'][0]) +"\n[1] N Seattle - "+ str(rent_0b1b['N Seattle'][0]) +"\n[2] WallingFDord - "+ str(rent_0b1b['WallingFDord'][0]) +"\n[3] Lindley (NC) - "+ str(rent_0b1b['Lindley'][0]))
+    print(body)
     location = int(input('Where is the property located? '))
-    if location == 0:
-        location = static_location[0]
-    elif location == 1:
-        location = static_location[1]
-    elif location == 2:
-        location = static_location[2]
-    elif location == 3:
-        location = static_location[3]
+    location = locations[location]
 
     studio_doors = int(input('How many studio units does the property have: '))
     one_bed_doors = int(input('How many 1b1b units does the property have: '))
@@ -140,11 +135,10 @@ def apartment():
     print('Total Expenses:\n                      ' + locale.format_string("%d",total, grouping=True))
 
     if rent < total:
-        print('\n \nThis is not a good investment!!\n\nYou have a negative cashflow of: ' + locale.format_string("%d",cash_flow, grouping=True))
+        print('\n \nThis is not a good investment\n\nYou have a negative cashflow of: ' + locale.format_string("%d",cash_flow, grouping=True))
     else:
         print('\nThis is a good investment!!\n\nYou have a positive cashflow of: ' + locale.format_string("%d",cash_flow, grouping=True))
 
 
-
 # Calling the function above
-apartment()
+apartment(static_location, text)
