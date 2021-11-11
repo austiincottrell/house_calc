@@ -7,5 +7,5 @@ format as such:
 
     {'< Location as a string >':[< zip code >, [< lowest you'll take for rent >, < highest you'll take for rent >]]}
 
-Your negative cashflow is ran with the lowest rent so you don't over estimate your cashflow and get yourself into a bad investment.
+Your cashflow is ran with the lowest rent so you don't over estimate your cashflow and get yourself into a bad investment.
 </p>
