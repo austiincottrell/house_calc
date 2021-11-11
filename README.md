@@ -1,6 +1,5 @@
 # Real Estate Calc
-<br>
-<h3>House calculator that was built to see if a house was a property was a good investment</h3>
+<h3>House calculator that was built to see if a house was a good investment</h3>
 <br>
 <p> If you want to use: simply add on or subtract from the rent dictionaries at the top of house.py
 
